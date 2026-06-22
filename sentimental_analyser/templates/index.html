@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analyzer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Sentiment Analyzer</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <textarea
+            name="text"
+            placeholder="Enter your text here..."
+            required></textarea>
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if sentiment %}
+    <div class="result">
+        <h2>{{ sentiment }}</h2>
+        <p>Polarity Score: {{ score }}</p>
+    </div>
+    {% endif %}
+</div>
+
+<script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>
